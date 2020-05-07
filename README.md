@@ -94,7 +94,7 @@ BASE
     		"status":                   String,
     		"engine":                   String,
     		"status_subnets":[
-    			                     String
+    			                    String
     		]
     	},
     },
@@ -114,13 +114,13 @@ BASE
     		"nome do environment":{
     			"instancias":{
     				"identificador instancia":{
-    					"status":				String
-    					"cor":					String
-    					"causas":  			   [String]
-    					"metrica_disponivel":	Boolean
+    					"status":			String
+    					"cor":				String
+    					"causas":  		    [String]
+    					"metrica_disponivel":	        Boolean
     					"metrica_duracao":		int | null
     					"metrica_requests":		int | null
-    					"metrica_codigos": {	dict | null
+    					"metrica_codigos": {	        dict | null
     						"Status2xx":		int		
     						"Status3xx":		int
     						"Status4xx":		int
@@ -144,7 +144,7 @@ BASE
     					"deploy_status":		String
     					},
     				},
-    				"versao_aplicativo":		    String,
+    				"versao_aplicativo":		        String,
     				"status":				String,
     				"cor":					String,
     				"status_saude":				String,
