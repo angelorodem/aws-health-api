@@ -1,8 +1,9 @@
-mandar no endpoint um GET com
-[todo]
+Esse projeto é uma simples API que retorna informações de saúde de vários serviços da AWS diferentes, usando apenas uma lambda.
 
+É recomendado usar autenticação com AWS Cognito no endpoint dessa API para evitar vazamento de informações
 
-BASE
+## BASE
+Json base que contem cada um dos itens analisados.
 
     {
     	"instancias":	-JSON INSTANCIAS-
@@ -14,6 +15,7 @@ BASE
 
 
 ## -JSON INSTANCIAS-
+Json que contém informação das maquinas em execução
 
     "instancias": {
     	"Nome Instancia":{
@@ -38,6 +40,7 @@ BASE
 
 
 ## -JSON COMPLIANCE-
+Json que contém dados sobre as compliances analisadas.
 
     "compliance":{
     	"Nome Compliance":{
@@ -52,6 +55,7 @@ BASE
 **non-compliant**:	Numero de maquinas fora de compliance  
 
 ## -JSON CACHE-
+Json que contém informação sobre os servidores de cache
 
     "cache":{
     	"updates":[
@@ -86,6 +90,7 @@ BASE
 
 
 ## -JSON RDS-
+Json que contém informação sobre os bancos de dados
 
     "rds":{
     	"Nome database":{
@@ -108,6 +113,7 @@ BASE
 
 
 ## -JSON BEANSTALK-
+Json que contém informações sobre o BeanStalk
 
     "beanstalk":{
     	"nome da aplicação":{
