@@ -7,8 +7,8 @@ BASE
     {
     	"instancias":	-JSON INSTANCIAS-
     	"compliance": 	-JSON COMPLIANCE-
-    	"cache": 		-JSON CACHE-
-    	"rds":			-JSON RDS-
+    	"cache": 	-JSON CACHE-
+    	"rds":		-JSON RDS-
     	"beanstalk":	-JSON BEANSTALK-
     }
 
@@ -17,12 +17,12 @@ BASE
 
     "instancias": {
     	"Nome Instancia":{
-    		"instance_id": String
-    		"projeto": String | null,
-    		"sub-projeto": String | null,
-    		"instance_state": String,
-    		"system_status":[String],
-    		"instance_status":[String]
+    		"instance_id":     String
+    		"projeto":         String | null,
+    		"sub-projeto":     String | null,
+    		"instance_state":  String,
+    		"system_status":   [String],
+    		"instance_status": [String]
     	}
     }
 
@@ -41,7 +41,7 @@ BASE
 
     "compliance":{
     	"Nome Compliance":{
-    		"compliant": int,
+    		"compliant":     int,
     		"non-compliant": int
     	}
     },
@@ -56,17 +56,17 @@ BASE
     "cache":{
     	"updates":[
     		{
-    			"tipo": String,
-    			"grupo_afetado": String,
-    			"severidade": String,
-    			"status":String,
+    			"tipo":                 String,
+    			"grupo_afetado":        String,
+    			"severidade":           String,
+    			"status":               String,
     			"aplicar_antes_de_utc": int,
-    			"sla_atingido": String,
+    			"sla_atingido":         String,
     		}
     	],
     	"grupo_clusters":{
     		"Nome grupo":{
-    			"status_grupo":String,
+    			"status_grupo": String,
     			"numero_nodes": int
     		}
     	}
@@ -89,12 +89,12 @@ BASE
 
     "rds":{
     	"Nome database":{
-    		"armazenamento_alocado":int,
-    		"armazenamento_maximo":int | null,
-    		"status": String,
-    		"engine": String,
+    		"armazenamento_alocado":    int,
+    		"armazenamento_maximo":     int | null,
+    		"status":                   String,
+    		"engine":                   String,
     		"status_subnets":[
-    			String
+    			                     String
     		]
     	},
     },
@@ -129,13 +129,13 @@ BASE
     					"metrica_latencia":		int | null,
     					"metrica_cpu":			dict | null
     					 {
-    						"User":				float,			
-    						"Nice":				float,
-    						"System":			float,
-    						"Idle":				float,
-    						"IOWait":			float,
-    						"IRQ":				float,
-    						"SoftIRQ":			float
+    						"User":			float,			
+    						"Nice":			float,
+    						"System":		float,
+    						"Idle":			float,
+    						"IOWait":		float,
+    						"IRQ":			float,
+    						"SoftIRQ":		float
     					 },
     					"metrica_carga":[		dict | null
     					 int
@@ -144,20 +144,20 @@ BASE
     					"deploy_status":		String
     					},
     				},
-    				"versao_aplicativo":		String,
-    				"status":					String,
-    				"cor":						String,
+    				"versao_aplicativo":		    String,
+    				"status":				String,
+    				"cor":					String,
     				"status_saude":				String,
-    				"metrica_disponivel":		Boolean,
-    				"metrica_latencia":{		dict | null
-    				   "P999":				float
-    				   "P99":				float
-    				   "P95":				float
-    				   "P90":				float
-    				   "P85":				float
-    				   "P75":				float
-    				   "P50":				float
-    				   "P10":				float
+    				"metrica_disponivel":		        Boolean,
+    				"metrica_latencia":{		        dict | null
+    				   "P999":			    	float
+    				   "P99":			    	float
+    				   "P95":			    	float
+    				   "P90":			    	float
+    				   "P85":			    	float
+    				   "P75":			    	float
+    				   "P50":			    	float
+    				   "P10":			    	float
     				},
     				"metrica_duracao":			int | null,
     				"metrica_requests":			int | null,
