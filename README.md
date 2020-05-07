@@ -116,7 +116,7 @@ BASE
     				"identificador instancia":{
     					"status":			String
     					"cor":				String
-    					"causas":  		    [String]
+    					"causas":  		        [String]
     					"metrica_disponivel":	        Boolean
     					"metrica_duracao":		int | null
     					"metrica_requests":		int | null
