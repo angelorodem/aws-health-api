@@ -176,9 +176,9 @@ Json que contém informações sobre o BeanStalk
     				"mensagens_condicao":			string | null
     				"condicao_maquinas_load_balancer":{
     				   "nome maquina":{
-    					  "condicao":       String,
-    					  "codigo_rasao":   String,
-    					  "descricao":      String
+    					  "condicao":                     String,
+    					  "codigo_rasao":                 String,
+    					  "descricao":                    String
     				   }
     				}
     			}
