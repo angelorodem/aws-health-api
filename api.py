@@ -1,17 +1,19 @@
+import json
 import boto3
 import time
-import json
+
 
 
 def get_ec2_data():
     ec2 = boto3.resource('ec2')
 
     dict = {}
+    duplicate_names = set()
     count = 0
     for status in ec2.meta.client.describe_instance_status()['InstanceStatuses']:
         instance = ec2.Instance(status['InstanceId'])
         instance_id = status['InstanceId']
-        instance_name = "Sem nome " + str(count)
+        instance_name = "No-Name " + str(count)
         projeto = None
         sub_projeto = None
         count += 1
@@ -23,7 +25,6 @@ def get_ec2_data():
             if tags["Key"] == 'SUB-PROJETO':
                 sub_projeto = tags["Value"]
 
-
         instance_state = status['InstanceState']['Name']
 
         instance_status = []
@@ -34,8 +35,16 @@ def get_ec2_data():
         for i in status['SystemStatus']['Details']:
             system_status.append(i['Status'])
 
-        while instance_name in dict:
-            instance_name += '.'
+        # Cuida de nomes duplicados
+        if instance_name in duplicate_names:
+            instance_name = '{} ({})'.format(instance_name, instance_id)
+
+        elif instance_name in dict:
+            duplicate_names.add(instance_name)
+            temp = dict.pop(instance_name)
+            dict['{} ({})'.format(instance_name, temp['id_instancia'])] = temp
+            instance_name = '{} ({})'.format(instance_name, instance_id)
+
 
         dict[instance_name] = {
             'id_instancia': instance_id,
@@ -70,7 +79,7 @@ def get_cache_data():
 
     updates_request = client.describe_update_actions(
         ServiceUpdateStatus=[
-            'available','cancelled'
+            'available', 'cancelled'
         ],
         ShowNodeLevelUpdateStatus=True,
     )
@@ -128,7 +137,6 @@ def get_beanstalk_data():
     client_elb = boto3.client('elb')
 
     applications = client.describe_applications()
-    # Applications ->[] ApplicationName
 
     all_beans = {}
 
@@ -248,14 +256,24 @@ def get_beanstalk_data():
     return all_beans
 
 
-ret_dict = {}
-ret_dict['instancias'] = get_ec2_data()
-ret_dict['compliance'] = get_compliance_data()
-ret_dict['cache'] = get_cache_data()
-ret_dict['rds'] = get_rds_data()
-ret_dict['beanstalk'] = get_beanstalk_data()
-#pprint(ret_dict['beanstalk'])
-print(json.dumps(ret_dict))
+def lambda_handler(event, context):
+    try:
+        ret_dict = {}
+        ret_dict['instancias'] = get_ec2_data()
+        ret_dict['compliance'] = get_compliance_data()
+        ret_dict['cache'] = get_cache_data()
+        ret_dict['rds'] = get_rds_data()
+        ret_dict['beanstalk'] = get_beanstalk_data()
+        return json.dumps(ret_dict)
+        return {
+            'statusCode': 200,
+            'body': json.dumps(ret_dict)
+        }
+    except Exception as e:
+        return {
+            'statusCode': 500,
+            'body': json.dumps(str(e))
+        }
 
 
-
+print(lambda_handler('',''))
