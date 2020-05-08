@@ -1,4 +1,4 @@
-Esse projeto é uma simples API que retorna informações de saúde de vários serviços da AWS diferentes, usando apenas uma lambda.
+Esse projeto é uma simples API que retorna informações de saúde de vários serviços da AWS diferentes, usando apenas uma função lambda.  
 
 É recomendado usar autenticação com AWS Cognito no endpoint dessa API para evitar vazamento de informações
 
