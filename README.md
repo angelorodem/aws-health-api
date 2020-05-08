@@ -1,4 +1,4 @@
-Esse projeto é uma simples API que retorna informações de saúde de vários serviços da AWS diferentes, usando apenas uma lambda.
+Esse projeto é uma simples API que retorna informações de saúde de vários serviços da AWS diferentes, usando apenas uma função lambda.  
 
 É recomendado usar autenticação com AWS Cognito no endpoint dessa API para evitar vazamento de informações
 
@@ -31,8 +31,8 @@ Json que contém informação das maquinas em execução
 
 **Nome Instancia**:   Nome da instancia  
 **id_instancia**:      id da instancia  
-**projeto**           Nome do Projeto Eg. Projeto X
-**sub-projeto**:		  Nome do sub-projeto Eg. Homologação
+**projeto**           Nome do Projeto Eg. Projeto X  
+**sub-projeto**:		  Nome do sub-projeto Eg. Homologação  
 **estado_instancia** :	'pending'|'running'|'shutting-down'|'terminated'|'stopping'|'stopped'  
 **condicao_instancia**:	'passed'|'failed'|'insufficient-data'|'initializing'  
 **condicao_sistema**:		'passed'|'failed'|'insufficient-data'|'initializing'  
