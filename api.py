@@ -264,7 +264,6 @@ def lambda_handler(event, context):
         ret_dict['cache'] = get_cache_data()
         ret_dict['rds'] = get_rds_data()
         ret_dict['beanstalk'] = get_beanstalk_data()
-        return json.dumps(ret_dict)
         return {
             'statusCode': 200,
             'body': json.dumps(ret_dict)
@@ -274,6 +273,3 @@ def lambda_handler(event, context):
             'statusCode': 500,
             'body': json.dumps(str(e))
         }
-
-
-print(lambda_handler('',''))
