@@ -31,8 +31,8 @@ Json que contém informação das maquinas em execução
 
 **Nome Instancia**:   Nome da instancia  
 **id_instancia**:      id da instancia  
-**projeto**           Nome do Projeto Eg. Projeto X  
-**sub-projeto**:		  Nome do sub-projeto Eg. Homologação  
+**projeto**           Nome do Projeto Eg. Projeto X (TAG PROJETO)  
+**sub-projeto**:		  Nome do sub-projeto Eg. Homologação (TAG SUB-PROJETO)  
 **estado_instancia** :	'pending'|'running'|'shutting-down'|'terminated'|'stopping'|'stopped'  
 **condicao_instancia**:	'passed'|'failed'|'insufficient-data'|'initializing'  
 **condicao_sistema**:		'passed'|'failed'|'insufficient-data'|'initializing'  
