@@ -2,7 +2,7 @@ Esse projeto é uma simples API que retorna informações de saúde de vários s
 
 É recomendado usar autenticação com AWS Cognito no endpoint dessa API para evitar vazamento de informações
 
-O Código atual espera um input GET chamado key (`?key=`) para autenticar com a variável de ambiente.
+O Código atual espera um input GET chamado key (`?key=`) para autenticar com a variável de ambiente, como a chave é fixa, é extremamente necessário o uso de https.
 
 ## BASE
 Json base que contem cada um dos itens analisados.
