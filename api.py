@@ -1,13 +1,13 @@
 import json
 import boto3
 import time
-
+import os
 
 
 def get_ec2_data():
     ec2 = boto3.resource('ec2')
 
-    dict = {}
+    dict_ret = {}
     duplicate_names = set()
     count = 0
     for status in ec2.meta.client.describe_instance_status()['InstanceStatuses']:
@@ -39,14 +39,13 @@ def get_ec2_data():
         if instance_name in duplicate_names:
             instance_name = '{} ({})'.format(instance_name, instance_id)
 
-        elif instance_name in dict:
+        elif instance_name in dict_ret:
             duplicate_names.add(instance_name)
-            temp = dict.pop(instance_name)
-            dict['{} ({})'.format(instance_name, temp['id_instancia'])] = temp
+            temp = dict_ret.pop(instance_name)
+            dict_ret['{} ({})'.format(instance_name, temp['id_instancia'])] = temp
             instance_name = '{} ({})'.format(instance_name, instance_id)
 
-
-        dict[instance_name] = {
+        dict_ret[instance_name] = {
             'id_instancia': instance_id,
             'projeto': projeto,
             'sub-projeto': sub_projeto,
@@ -55,21 +54,21 @@ def get_ec2_data():
             'condicao_instancia': instance_status
         }
 
-    return dict
+    return dict_ret
 
 
 def get_compliance_data():
     client = boto3.client('ssm')
     response = client.list_compliance_summaries()
 
-    dict = {}
+    dict_ret = {}
     for i in response['ComplianceSummaryItems']:
-        dict[i['ComplianceType']] = {
+        dict_ret[i['ComplianceType']] = {
             "compliant": str(i['CompliantSummary']['CompliantCount']),
             "nao_compliant": str(i['NonCompliantSummary']['NonCompliantCount'])
         }
 
-    return dict
+    return dict_ret
 
 
 def get_cache_data():
@@ -119,11 +118,11 @@ def get_rds_data():
     databases = {}
     for i in response['DBInstances']:
         databases[i['DBInstanceIdentifier']] = {
-        'armazenamento_alocado': i['AllocatedStorage'],
-        'armazenamento_maximo': i['MaxAllocatedStorage'] if 'MaxAllocatedStorage' in i else None,
-        'condicao' : i['DBInstanceStatus'],
-        'sgbd': i['Engine'],
-        'condicao_subnets' : [],
+            'armazenamento_alocado': i['AllocatedStorage'],
+            'armazenamento_maximo': i['MaxAllocatedStorage'] if 'MaxAllocatedStorage' in i else None,
+            'condicao' : i['DBInstanceStatus'],
+            'sgbd': i['Engine'],
+            'condicao_subnets' : [],
         }
 
         for j in i['DBSubnetGroup']['Subnets']:
@@ -210,7 +209,6 @@ def get_beanstalk_data():
                     mcpus = None
                     mcarg = None
 
-
                 instancias[instance['InstanceId']] = {
                     'condicao': instance['HealthStatus'],
                     'cor': instance['Color'],
@@ -258,18 +256,32 @@ def get_beanstalk_data():
 
 def lambda_handler(event, context):
     try:
-        ret_dict = {}
-        ret_dict['instancias'] = get_ec2_data()
-        ret_dict['compliance'] = get_compliance_data()
-        ret_dict['cache'] = get_cache_data()
-        ret_dict['rds'] = get_rds_data()
-        ret_dict['beanstalk'] = get_beanstalk_data()
+        if 'key' not in str(event['queryStringParameters']):
+            return {
+                'statusCode': 401,
+                'body': 'Auth missing'
+            }
+        else:
+            if str(event['queryStringParameters']) != os.environ['key']:
+                return {
+                    'statusCode': 401,
+                    'body': 'Key not valid'
+                }
+
+        ret_dict = {'instancias': get_ec2_data(),
+                    'compliance': get_compliance_data(),
+                    'cache': get_cache_data(),
+                    'rds': get_rds_data(),
+                    'beanstalk': get_beanstalk_data()}
+
         return {
             'statusCode': 200,
             'body': json.dumps(ret_dict)
         }
     except Exception as e:
+        # put on cloudwatch logs
+        print(str(e))
         return {
             'statusCode': 500,
-            'body': json.dumps(str(e))
+            'body': json.dumps('Internal error')
         }
