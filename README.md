@@ -3,6 +3,7 @@ Esse projeto é uma simples API que retorna informações de saúde de vários s
 É recomendado usar autenticação com AWS Cognito no endpoint dessa API para evitar vazamento de informações
 
 O Código atual espera um input GET chamado key (`?key=`) para autenticar com a variável de ambiente, como a chave é fixa, é extremamente necessário o uso de https.
+ 
 
 ## BASE
 Json base que contem cada um dos itens analisados.
@@ -220,3 +221,54 @@ Json que contém informações sobre o BeanStalk
 
 
 
+
+### Roadmap de proximas features
+- SES
+    - Metricas de Envios, Compliant, Bounce e reject
+    - Send Quotas (Limites de uso mensal e diário)
+    - Status de reputação
+    - Envio habilitado (indica se é possivel enviar emails)
+- ACM
+    - Status de certificado digital
+    - Tipo (Amazon, Importado)
+    - Status de renovação
+    - Possibilidade de renovação (S/n)
+    - Data de vencimento do certificado
+- AWS Backup
+    - Porcentagem de conclusão
+    - Ultima Execução de plano
+- CodeBuild
+    - Build Status
+    - Start / end date time
+- ECS
+    - Clusters
+        - Cluster Status
+        - Cluster instance count
+        - Cluster pending tasks
+        - numero de serviços ativos
+        - estatisticas 
+    - Instancia de Containers
+        - Mesmas que a EC2
+    - Serviços
+        - Status
+        - Estatisticas
+    - Task
+        - Status
+        - Saude containers
+        - Conectividade
+- ECR
+    - Status scan
+    - Resultados Scan
+- AWS Health (Somente disponivel em plano)
+    - Entidades afetadas por evento
+    - Status da entidade
+    - Status do evento
+    - Categoria do evento
+    - Escopo do evento
+    - Descrição
+    
+    
+ #### Distant future
+ - S3
+ - SQS
+ - Mais SSM
