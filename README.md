@@ -1,9 +1,10 @@
-Esse projeto é uma simples API que retorna informações de saúde de vários serviços da AWS diferentes, usando apenas uma função lambda.  
+This project is a simple API that returns health information from several different AWS services, using only one lambda function.
 
-É recomendado usar autenticação com AWS Cognito no endpoint dessa API para evitar vazamento de informações
+It is recommended to use authentication with AWS Cognito at the endpoint of this API to avoid information leakage
 
-O Código atual espera um input GET chamado key (`?key=`) para autenticar com a variável de ambiente, como a chave é fixa, é extremamente necessário o uso de https.
- 
+The current Code expects a GET input called key (`? Key =`) to authenticate with the environment variable, as the key is fixed, the use of https is extremely necessary.
+
+(Big update in progress, readme is not updated)
 
 ## BASE
 Json base que contem cada um dos itens analisados.
@@ -223,11 +224,7 @@ Json que contém informações sobre o BeanStalk
 
 
 ### Roadmap de proximas features
-- SES
-    - Metricas de Envios, Compliant, Bounce e reject
-    - Send Quotas (Limites de uso mensal e diário)
-    - Status de reputação
-    - Envio habilitado (indica se é possivel enviar emails)
+
 - ACM
     - Status de certificado digital
     - Tipo (Amazon, Importado)

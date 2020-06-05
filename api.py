@@ -262,7 +262,7 @@ def lambda_handler(event, context):
                 'body': 'Auth missing'
             }
         else:
-            if str(event['queryStringParameters']) != os.environ['key']:
+            if str(event['queryStringParameters']['key']) != os.environ['key']:
                 return {
                     'statusCode': 401,
                     'body': 'Key not valid'
@@ -273,6 +273,8 @@ def lambda_handler(event, context):
                     'cache': get_cache_data(),
                     'rds': get_rds_data(),
                     'beanstalk': get_beanstalk_data()}
+
+        print(ret_dict)
 
         return {
             'statusCode': 200,
