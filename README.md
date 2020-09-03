@@ -14,11 +14,11 @@ Json base que contem cada um dos itens analisados.
 
     {
     	"INSTANCES":	-INSTANCES JSON-
-    	"SSM":			-SSM COMPLIANCE JSON-
+    	"SSM":		-SSM COMPLIANCE JSON-
     	"ELASTICACHE": 	-ELASTICACHE JSON-
-    	"RDS":			-RDS JSON-
+    	"RDS":		-RDS JSON-
     	"BEANSTALK":	-ELASTICBEANSTALK JSON-
-    	"SES":			-SES JSON-
+    	"SES":		-SES JSON-
     }
 
 
