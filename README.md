@@ -7,18 +7,18 @@ It is recommended to use authentication with AWS Cognito at the endpoint of this
 
 The current Code expects a GET input called key (`? Key =`) to authenticate with the environment variable, as the key is fixed, the use of https is extremely necessary.
 
-(Big update in progress, readme is not updated)
+(readme is not fully updated)
 
 ## BASE
 Json base que contem cada um dos itens analisados.
 
     {
     	"INSTANCES":	-INSTANCES JSON-
-    	"SSM":		-SSM COMPLIANCE JSON-
+    	"SSM":			-SSM COMPLIANCE JSON-
     	"ELASTICACHE": 	-ELASTICACHE JSON-
-    	"RDS":		-RDS JSON-
+    	"RDS":			-RDS JSON-
     	"BEANSTALK":	-ELASTICBEANSTALK JSON-
-    	"SES":		-SES JSON-
+    	"SES":			-SES JSON-
     }
 
 
@@ -243,38 +243,39 @@ JSON that contains elastic beanstalk information.
      }
 
    
-**ApplicationName**: Application name
-**EnvironmentInstances**: List of instances with statuses
+**ApplicationName**: Application name    
+**EnvironmentInstances**: List of instances with statuses     
 
- - **InstanceId**: Identifier of the instances of the environment    **HealthStatus**: Machine status - https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html
- - **Color**: Color referring to the status of the machine  https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html
- - **Causes**: Message explaining the status of the machine
- - **MeticsAvailable**: Boolean indicating whether values ​​with metrica_ OF THIS MACHINE are available   
- - **DurationMetric**: Update period between metrics
- - **RequestCountMetrics**: Number of requests in the metric period
- - **StatusCodesMetrics**: lists http codes returned by the application
- - **LatencyMetrics**: List containing 8 latency percentile metrics 0.1% (99.9) 1% (99) 5% (95) 10% (90) 15%  (85) 25% (75) 50% (50) 90 % (10)
- - **CPUUtilizationMetrics**: list containing metrics of CPU usage at various levels (depending on the platform, structure may vary)
- - **LoadAverageMetrics**: [[int]] Unit list containing average load list of cpu for 1 5 and 15 minutes
- - **DeployVersionLabel**: Version of the application that is installed on this machine
- - **DeployStatus**: Deployment status, indicates the current status of updates and modifications "In Progress", Deployed, "Failed"
-
-**EnvironmentName**: Name of the environment where the code is
-**EnvironmentVersionLabel**: Version of the application that was placed in the environment
-**EnvironmentStatus**: Discrete environment status - 'Launching' | 'Updating' | 'Ready' | 'Terminating' | 'Terminated',
-**EnvironmentColor**: Color referring to the status of the environment - 'Green' | 'Yellow' | 'Red' | 'Gray', https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced -status.html
-**EnvironmentHealthStatus**: General environment status - 'NoData' | 'Unknown' | 'Pending' | 'Ok' | 'Info' | 'Warning' | 'Degraded' | 'Severe' | 'Suspended', https: / /docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html
-**EnvironmentMetricsAvailable**: Boolean indicating whether values ​​with metrica_ DO AMBIENTE are available
-**EnvironmentLatencyMetrics**: List containing 8 metrics of latency percentile 0.1% (99.9) 1% (99) 5% (95) 10% (90) 15% (85) 25% (75) 50% (50) 90 % (10) of the ENVIRONMENT
-**EnvironmentDurationMetrics**: Update period between metrics
-**EnvironmentRequestCountMetrics**: Number of requests in the metric period
-**EnvironmentStatusCodesMetrics**: lists http codes returned by the application
-**EnvironmentCauseMessage**: String informing descriptively the problems of the environment (if any)
-**EnvironmentLoadBalancers**: Loadbalancer communication status list to the machine (not working properly)
-**LoadBalancerInstanceId**: machine id
-**LoadBalancerState**:, machine connection status - InService | OutOfService | Unknown
-**LoadBalancerReasonCode**:, in case of a problem what is the problem code - ELB | Instance | AT
-**LoadBalancerDescription**: description of the problem 
+ - **InstanceId**: Identifier of the instances of the environment
+ - **HealthStatus**: Machine status - https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html    
+ - **Color**: Color referring to the status of the machine  https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html     
+ - **Causes**: Message explaining the status of the machine    
+ - **MeticsAvailable**: Boolean indicating whether values ​​with metrica_ OF THIS MACHINE are available       
+ - **DurationMetric**: Update period between metrics    
+ - **RequestCountMetrics**: Number of requests in the metric period    
+ - **StatusCodesMetrics**: lists http codes returned by the application    
+ - **LatencyMetrics**: List containing 8 latency percentile metrics 0.1% (99.9) 1% (99) 5% (95) 10% (90) 15%  (85) 25% (75) 50% (50) 90 % (10)    
+ - **CPUUtilizationMetrics**: list containing metrics of CPU usage at various levels (depending on the platform, structure may vary)    
+ - **LoadAverageMetrics**: [[int]] Unit list containing average load list of cpu for 1 5 and 15 minutes    
+ - **DeployVersionLabel**: Version of the application that is installed on this machine    
+ - **DeployStatus**: Deployment status, indicates the current status of updates and modifications "In Progress", Deployed, "Failed"    
+    
+**EnvironmentName**: Name of the environment where the code is    
+**EnvironmentVersionLabel**: Version of the application that was placed in the environment    
+**EnvironmentStatus**: Discrete environment status - 'Launching' | 'Updating' | 'Ready' | 'Terminating' | 'Terminated',    
+**EnvironmentColor**: Color referring to the status of the environment - 'Green' | 'Yellow' | 'Red' | 'Gray', https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced -status.html    
+**EnvironmentHealthStatus**: General environment status - 'NoData' | 'Unknown' | 'Pending' | 'Ok' | 'Info' | 'Warning' | 'Degraded' | 'Severe' | 'Suspended', https: / /docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html    
+**EnvironmentMetricsAvailable**: Boolean indicating whether values ​​with metrica_ DO AMBIENTE are available    
+**EnvironmentLatencyMetrics**: List containing 8 metrics of latency percentile 0.1% (99.9) 1% (99) 5% (95) 10% (90) 15% (85) 25% (75) 50% (50) 90 % (10) of the ENVIRONMENT    
+**EnvironmentDurationMetrics**: Update period between metrics    
+**EnvironmentRequestCountMetrics**: Number of requests in the metric period    
+**EnvironmentStatusCodesMetrics**: lists http codes returned by the application    
+**EnvironmentCauseMessage**: String informing descriptively the problems of the environment (if any)    
+**EnvironmentLoadBalancers**: Loadbalancer communication status list to the machine (not working properly)    
+**LoadBalancerInstanceId**: machine id    
+**LoadBalancerState**:, machine connection status - InService | OutOfService | Unknown    
+**LoadBalancerReasonCode**:, in case of a problem what is the problem code - ELB | Instance | AT    
+**LoadBalancerDescription**: description of the problem     
 
 
 ## -SES JSON-
@@ -296,7 +297,14 @@ JSON that contains elastic beanstalk information.
         ]
      }
 
-
+**StatiticsDataPoints**: lists of graph datapoints containing multiple send statistics   
+**Timestamp**: Timestap of the datapoint
+**DeliveryAttempts**: numer of delivery attempts    
+**Bounces**: Number of email bounces    
+**Complaints**: Number of email compliants    
+**Rejects**: Number of rejected emails    
+**SendingQuota**: Maximum email sending Quote
+**Domains**: email domain
 
 ### Roadmap of next features
 
