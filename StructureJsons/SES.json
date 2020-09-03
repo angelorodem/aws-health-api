@@ -1,0 +1,17 @@
+{
+    "SES":[
+       {
+          "StatiticsDataPoints":[
+             {
+                "Timestamp":"datetime(2015, 1, 1)",
+                "DeliveryAttempts":123,
+                "Bounces":123,
+                "Complaints":123,
+                "Rejects":123
+             }
+          ],
+          "SendingQuota":"int",
+          "Domains":"int | null"
+       }
+    ]
+ }

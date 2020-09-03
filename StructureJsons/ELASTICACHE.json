@@ -1,0 +1,21 @@
+{
+    "ELASTICACHE":{
+       "ClusterUpdates":[
+          {
+             "ServiceUpdateType":"String",
+             "GroupId":"String",
+             "ServiceUpdateSeverity":"String",
+             "UpdateActionStatus":"String",
+             "ServiceUpdateRecommendedApplyByDate":"int",
+             "SlaMet":"String"
+          }
+       ],
+       "ClusterGroups":[
+          {
+             "ReplicationGroupId":"String",
+             "CacheClusterStatus":"String",
+             "NumCacheNodes":"int"
+          }
+       ]
+    }
+ }

@@ -1,0 +1,74 @@
+{
+    "BEANSTALK":[
+       {
+          "ApplicationName":"String",
+          "EnvironmentName":"String",
+          "EnvironmentInstances":[
+             {
+                "InstanceId":"String",
+                "HealthStatus":"String",
+                "Color":"String",
+                "Causes":[
+                   "String"
+                ],
+                "MeticsAvailable":"Boolean",
+                "DurationMetric":"int | null",
+                "RequestCountMetrics":"int | null",
+                "StatusCodesMetrics":{
+                   "Status2xx":"int",
+                   "Status3xx":"int",
+                   "Status4xx":"int",
+                   "Status5xx":"int"
+                },
+                "LatencyMetrics":"int | null",
+                "CPUUtilizationMetrics":{
+                   "User":"float",
+                   "Nice":"float",
+                   "System":"float",
+                   "Idle":"float",
+                   "IOWait":"float",
+                   "IRQ":"float",
+                   "SoftIRQ":"float"
+                },
+                "LoadAverageMetrics":[
+                   "int"
+                ],
+                "DeployVersionLabel":"String",
+                "DeployStatus":"String"
+             }
+          ],
+          "EnvironmentVersionLabel":"String",
+          "EnvironmentStatus":"String",
+          "EnvironmentColor":"String",
+          "EnvironmentHealthStatus":"String",
+          "EnvironmentMetricsAvailable":"Boolean",
+          "EnvironmentLatencyMetrics":{
+             "P999":"float",
+             "P99":"float",
+             "P95":"float",
+             "P90":"float",
+             "P85":"float",
+             "P75":"float",
+             "P50":"float",
+             "P10":"float"
+          },
+          "EnvironmentDurationMetrics":"int | null",
+          "EnvironmentRequestCountMetrics":"int | null",
+          "EnvironmentStatusCodesMetrics":{
+             "Status2xx":"int | null",
+             "Status3xx":"int | null",
+             "Status4xx":"int | null",
+             "Status5xx":"int | null"
+          },
+          "EnvironmentCauseMessage":"string | null",
+          "EnvironmentLoadBalancers":[
+             {
+                "LoadBalancerInstanceId":"String",
+                "LoadBalancerState":"String",
+                "LoadBalancerReasonCode":"String",
+                "LoadBalancerDescription":"String"
+             }
+          ]
+       }
+    ]
+ }

@@ -38,7 +38,7 @@ def get_elasticache_data(session):
         })
 
     upd = {
-        "atualizacoes": updates,
-        "grupo_clusters": clusters
+        "ClusterUpdates": updates,
+        "ClusterGroups": clusters
     }
     return upd

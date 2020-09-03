@@ -100,17 +100,18 @@ def get_beanstalk_data(session):
                     'DeployStatus': instance['Deployment']['Status']
                 })
 
-            status_maquinas_elb = None
+            status_maquinas_elb = []
             if load_balancer_name is not None and len(load_balancer_name) < 32:
 
                 elbs = client_elb.describe_instance_health(LoadBalancerName=load_balancer_name)
                 status_maquinas_elb = {}
                 for maq in elbs['InstanceStates']:
-                    status_maquinas_elb[maq['InstanceId']] = {
+                    status_maquinas_elb.append({
+                        'LoadBalancerInstanceId' : maq['InstanceId'],
                         'LoadBalancerState': maq['State'],
                         'LoadBalancerReasonCode': maq['ReasonCode'],
                         'LoadBalancerDescription': maq['Description'],
-                    }
+                    })
 
             list_apps.append({
                 'ApplicationName': aplication_name,
