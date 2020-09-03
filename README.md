@@ -43,13 +43,13 @@ This JSON  contains information about running instances
        ]
     }
 
-**InstanceName**:		Instance name  
-**InstanceId**:				Unique instance ID  
-**ProjectTag**:				Project tag used to separate projects in the AWS account, default is PROJETO
-**SubProjectTag**:		Sub-project tag used to separate further the elements in the project, default is SUB-PROJETO 
-**InstanceState**:		'pending'|'running'|'shutting-down'|'terminated'|'stopping'|'stopped'  
-**InstanceStatus**:		'passed'|'failed'|'insufficient-data'|'initializing'  
-**SystemStatus**:			'passed'|'failed'|'insufficient-data'|'initializing'  
+**InstanceName**:		Instance name     
+**InstanceId**:				Unique instance ID    
+**ProjectTag**:				Project tag used to separate projects in the AWS account, default is PROJETO    
+**SubProjectTag**:		Sub-project tag used to separate further the elements in the project, default is SUB-PROJETO    
+**InstanceState**:		'pending'|'running'|'shutting-down'|'terminated'|'stopping'|'stopped'   
+**InstanceStatus**:		'passed'|'failed'|'insufficient-data'|'initializing'   
+**SystemStatus**:			'passed'|'failed'|'insufficient-data'|'initializing'   
 
 
 ## -SSM COMPLIANCE JSON-
@@ -65,9 +65,9 @@ JSON for all configurated SSM compliaces.
        ]
     }
 
-**ComplianceType**:	Compliance name, Eg. Patch Compliance.
-**CompliantCount**:		Number of compliant machines.  
-**NonCompliantCount**:	Number of non-compliant machines.  
+**ComplianceType**:	Compliance name, Eg. Patch Compliance.    
+**CompliantCount**:		Number of compliant machines.     
+**NonCompliantCount**:	Number of non-compliant machines.     
 
 
 ## -ELASTICACHE JSON-
@@ -97,15 +97,15 @@ JSON with information about cache servers.
 
 
 
-**ServiceUpdateType**:				Update type. 
-**GroupId**:									Cluster group that this update is meant for.  
-**ServiceUpdateSeverity**:		Update severity - 'critical'|'important'|'medium'|'low',  
-**UpdateActionStatus**:				Update status - 'not-applied'|'waiting-to-start'|'in-progress'|'stopping'|'stopped'|'complete',  
-**ServiceUpdateRecommendedApplyByDate**: Tempo em unix timestamp  
-**SlaMet**: 									Update SLA (if it was applied before the recommended date)  - yes'|'no'|'n/a'  
-**ReplicationGroupId**:				Replication group id  
-**CacheClusterStatus**:				Cache cluster status - available , creating , deleted , deleting , incompatible-network , modifying , rebooting cluster nodes , restore-failed , or snapshotting .  
-**NumCacheNodes**:					Number of cache nodes in the cluster
+**ServiceUpdateType**:				Update type.     
+**GroupId**:									Cluster group that this update is meant for.    
+**ServiceUpdateSeverity**:		Update severity - 'critical'|'important'|'medium'|'low',     
+**UpdateActionStatus**:				Update status - 'not-applied'|'waiting-to-start'|'in-progress'|'stopping'|'stopped'|'complete',   
+**ServiceUpdateRecommendedApplyByDate**: Tempo em unix timestamp   
+**SlaMet**: 									Update SLA (if it was applied before the recommended date)  - yes'|'no'|'n/a'   
+**ReplicationGroupId**:				Replication group id    
+**CacheClusterStatus**:				Cache cluster status - available , creating , deleted , deleting , incompatible-network , modifying , rebooting cluster nodes , restore-failed , or snapshotting .   
+**NumCacheNodes**:					Number of cache nodes in the cluster     
 
 
 ## -RDS JSON-
@@ -126,10 +126,10 @@ JSON containing information about the RDS instances.
        ]
     }
 
-**DBInstanceIdentifier**: 	RDS DB Instance identifier.
-**AllocatedStorage**:			Alocated storage for RDS Instance.
-**MaxAllocatedStorage**:	Max permitted storage.
-**DBInstanceStatus**: 		Database status - possible statuses: 
+**DBInstanceIdentifier**: 	RDS DB Instance identifier.    
+**AllocatedStorage**:			Alocated storage for RDS Instance.    
+**MaxAllocatedStorage**:	Max permitted storage.    
+**DBInstanceStatus**: 		Database status - possible statuses:     
 | DB Instance Status                  | Description                                                                                                                                                                                                                                                                                                                                                                       |
 |-------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | available                           | The DB instance is healthy and available.                                                                                                                                                                                                                                                                                                                                         |
@@ -298,13 +298,13 @@ JSON that contains elastic beanstalk information.
      }
 
 **StatiticsDataPoints**: lists of graph datapoints containing multiple send statistics   
-**Timestamp**: Timestap of the datapoint
-**DeliveryAttempts**: numer of delivery attempts    
+**Timestamp**: Timestap of the datapoint    
+**DeliveryAttempts**: numer of delivery attempts     
 **Bounces**: Number of email bounces    
 **Complaints**: Number of email compliants    
 **Rejects**: Number of rejected emails    
-**SendingQuota**: Maximum email sending Quote
-**Domains**: email domain
+**SendingQuota**: Maximum email sending Quote    
+**Domains**: email domain    
 
 ### Roadmap of next features
 
