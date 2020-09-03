@@ -1,5 +1,6 @@
 
 
+
 This project is a simple API that returns health information from several different AWS services, using only one lambda function.
 
 It is recommended to use authentication with AWS Cognito at the endpoint of this API to avoid information leakage
@@ -24,23 +25,23 @@ Json base que contem cada um dos itens analisados.
 ## -EC2 JSON-
 This JSON  contains information about running instances
 
-{
-   "INSTANCES":[
-      {
-         "InstanceName":"String",
-         "InstanceId":"String",
-         "ProjectTag":"String | null",
-         "SubProjectTag":"String | null",
-         "InstanceState":"String",
-         "SystemStatus":[
-            "String"
-         ],
-         "InstanceStatus":[
-            "String"
-         ]
-      }
-   ]
-}
+    {
+       "INSTANCES":[
+          {
+             "InstanceName":"String",
+             "InstanceId":"String",
+             "ProjectTag":"String | null",
+             "SubProjectTag":"String | null",
+             "InstanceState":"String",
+             "SystemStatus":[
+                "String"
+             ],
+             "InstanceStatus":[
+                "String"
+             ]
+          }
+       ]
+    }
 
 **InstanceName**:		Instance name  
 **InstanceId**:				Unique instance ID  
@@ -54,16 +55,15 @@ This JSON  contains information about running instances
 ## -SSM COMPLIANCE JSON-
 JSON for all configurated SSM compliaces.
 
-{
-   "SSM":[
-      {
-         "ComplianceType":"String",
-         "CompliantCount":"int",
-         "NonCompliantCount":"int"
-      }
-   ]
-}
-
+    {
+       "SSM":[
+          {
+             "ComplianceType":"String",
+             "CompliantCount":"int",
+             "NonCompliantCount":"int"
+          }
+       ]
+    }
 
 **ComplianceType**:	Compliance name, Eg. Patch Compliance.
 **CompliantCount**:		Number of compliant machines.  
@@ -73,27 +73,27 @@ JSON for all configurated SSM compliaces.
 ## -ELASTICACHE JSON-
 JSON with information about cache servers.
 
-{
-   "ELASTICACHE":{
-      "ClusterUpdates":[
-         {
-            "ServiceUpdateType":"String",
-            "GroupId":"String",
-            "ServiceUpdateSeverity":"String",
-            "UpdateActionStatus":"String",
-            "ServiceUpdateRecommendedApplyByDate":"int",
-            "SlaMet":"String"
-         }
-      ],
-      "ClusterGroups":[
-         {
-            "ReplicationGroupId":"String",
-            "CacheClusterStatus":"String",
-            "NumCacheNodes":"int"
-         }
-      ]
-   }
-}
+    {
+       "ELASTICACHE":{
+          "ClusterUpdates":[
+             {
+                "ServiceUpdateType":"String",
+                "GroupId":"String",
+                "ServiceUpdateSeverity":"String",
+                "UpdateActionStatus":"String",
+                "ServiceUpdateRecommendedApplyByDate":"int",
+                "SlaMet":"String"
+             }
+          ],
+          "ClusterGroups":[
+             {
+                "ReplicationGroupId":"String",
+                "CacheClusterStatus":"String",
+                "NumCacheNodes":"int"
+             }
+          ]
+       }
+    }
 
 
 
@@ -111,20 +111,20 @@ JSON with information about cache servers.
 ## -RDS JSON-
 JSON containing information about the RDS instances.
 
-{
-   "RDS":[
-      {
-         "DBInstanceIdentifier":"String",
-         "AllocatedStorage":"int",
-         "MaxAllocatedStorage":"int | null",
-         "DBInstanceStatus":"String",
-         "Engine":"String",
-         "SubnetStatus":[
-            "String"
-         ]
-      }
-   ]
-}
+    {
+       "RDS":[
+          {
+             "DBInstanceIdentifier":"String",
+             "AllocatedStorage":"int",
+             "MaxAllocatedStorage":"int | null",
+             "DBInstanceStatus":"String",
+             "Engine":"String",
+             "SubnetStatus":[
+                "String"
+             ]
+          }
+       ]
+    }
 
 **DBInstanceIdentifier**: 	RDS DB Instance identifier.
 **AllocatedStorage**:			Alocated storage for RDS Instance.
@@ -276,7 +276,25 @@ JSON that contains elastic beanstalk information.
 **LoadBalancerReasonCode**:, in case of a problem what is the problem code - ELB | Instance | AT
 **LoadBalancerDescription**: description of the problem 
 
-TODO: SES
+
+## -SES JSON-
+    {
+        "SES":[
+           {
+              "StatiticsDataPoints":[
+                 {
+                    "Timestamp":"datetime(2015, 1, 1)",
+                    "DeliveryAttempts":123,
+                    "Bounces":123,
+                    "Complaints":123,
+                    "Rejects":123
+                 }
+              ],
+              "SendingQuota":"int",
+              "Domains":"int | null"
+           }
+        ]
+     }
 
 
 
