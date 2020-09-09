@@ -1,0 +1,9 @@
+{
+    "key":"String",
+    "region":"String (opt)",
+    "custom":[
+        "INSTANCES","SSM","ELASTICACHE","RDS","BEANSTALK","SES"
+    ]
+
+
+}

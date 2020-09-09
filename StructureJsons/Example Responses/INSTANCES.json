@@ -1,0 +1,17 @@
+{
+    "INSTANCES":[
+       {
+          "InstanceName":"String",
+          "InstanceId":"String",
+          "ProjectTag":"String | null",
+          "SubProjectTag":"String | null",
+          "InstanceState":"String",
+          "SystemStatus":[
+             "String"
+          ],
+          "InstanceStatus":[
+             "String"
+          ]
+       }
+    ]
+ }

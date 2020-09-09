@@ -1,0 +1,9 @@
+{
+    "SSM":[
+       {
+          "ComplianceType":"String",
+          "CompliantCount":"int",
+          "NonCompliantCount":"int"
+       }
+    ]
+ }

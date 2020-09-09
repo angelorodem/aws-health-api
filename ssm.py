@@ -1,19 +1,27 @@
-import json
 import boto3
-import time
-import os
+import multiprocessing
 
+class SSM():
 
-def get_ssm_data(session):
-    client = session.client('ssm')
-    response = client.list_compliance_summaries()
+    def run(self, region):
+        queue = multiprocessing.Queue()
+        return (multiprocessing.Process(target=self.__parse_data, args=(queue,region,)), queue)
 
-    list_ret = []
-    for i in response['ComplianceSummaryItems']:
-        list_ret.append({
-            "ComplianceType": i['ComplianceType'],
-            "CompliantCount": str(i['CompliantSummary']['CompliantCount']),
-            "NonCompliantCount": str(i['NonCompliantSummary']['NonCompliantCount'])
-        })
+    def __parse_data(self, queue, region):
 
-    return list_ret
+        session = boto3
+        if region is not None:
+            session = boto3.session.Session(region_name=region)      
+
+        client = session.client('ssm')
+        response = client.list_compliance_summaries()
+
+        return_dicts = []
+        for i in response['ComplianceSummaryItems']:
+            return_dicts.append({
+                "ComplianceType": i['ComplianceType'],
+                "CompliantCount": str(i['CompliantSummary']['CompliantCount']),
+                "NonCompliantCount": str(i['NonCompliantSummary']['NonCompliantCount'])
+            })
+
+        queue.put({"SSM":return_dicts})

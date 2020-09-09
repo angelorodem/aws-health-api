@@ -1,0 +1,14 @@
+{
+    "RDS":[
+       {
+          "DBInstanceIdentifier":"String",
+          "AllocatedStorage":"int",
+          "MaxAllocatedStorage":"int | null",
+          "DBInstanceStatus":"String",
+          "Engine":"String",
+          "SubnetStatus":[
+             "String"
+          ]
+       }
+    ]
+ }

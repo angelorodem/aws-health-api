@@ -1,27 +1,38 @@
-import json
 import boto3
-import time
-import os
+import multiprocessing
 
-def get_rds_data(session):
-    client = session.client('rds')
+class RDS():
 
-    response = client.describe_db_instances()
+    def run(self, region):
+        queue = multiprocessing.Queue()
+        return (multiprocessing.Process(target=self.__parse_data, args=(queue,region,)), queue)
 
-    list_ret = []
-    for i in response['DBInstances']:
-        list_ret.append({
-            'DBInstanceIdentifier': i['DBInstanceIdentifier'],
-            'AllocatedStorage': i['AllocatedStorage'],
-            'MaxAllocatedStorage': i['MaxAllocatedStorage'] if 'MaxAllocatedStorage' in i else None,
-            'DBInstanceStatus' : i['DBInstanceStatus'],
-            'Engine': i['Engine'],
-            'SubnetStatus' : [],
-        })
+    def __parse_data(self, queue, region):
 
-        for j in i['DBSubnetGroup']['Subnets']:
-            list_ret[-1]['SubnetStatus'].append(j['SubnetStatus'])
+        session = boto3
+        if region is not None:
+            session = boto3.session.Session(region_name=region)      
 
-    return list_ret
+        client = session.client('rds')
+
+        response = client.describe_db_instances()
+
+        return_dicts = []
+        for i in response['DBInstances']:
+            return_dicts.append({
+                'DBInstanceIdentifier': i['DBInstanceIdentifier'],
+                'AllocatedStorage': i['AllocatedStorage'],
+                'MaxAllocatedStorage': i['MaxAllocatedStorage'] if 'MaxAllocatedStorage' in i else None,
+                'DBInstanceStatus' : i['DBInstanceStatus'],
+                'Engine': i['Engine'],
+                'SubnetStatus' : [],
+            })
+
+            for j in i['DBSubnetGroup']['Subnets']:
+                return_dicts[-1]['SubnetStatus'].append(j['SubnetStatus'])
+
+        queue.put({"RDS":return_dicts})
+
+
 
 
