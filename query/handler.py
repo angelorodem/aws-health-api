@@ -1,6 +1,4 @@
 import json
-import boto3
-import time
 import os
 
 from beanstalk import Beanstalk
@@ -11,8 +9,6 @@ from ssm import SSM
 from ses import SES
 
 from module import read_all,start_all,wait_all
-
-from pprint import pprint
 
 import traceback
 

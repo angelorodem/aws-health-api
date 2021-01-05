@@ -1,8 +1,3 @@
-import boto3
-import multiprocessing
-
-# --------------
-
 def start_all(processes):
     for process in processes:
         try:

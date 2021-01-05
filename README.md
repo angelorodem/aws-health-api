@@ -1,6 +1,3 @@
-
-
-
 This project is a simple API that returns health information from several different AWS services, using only one lambda function.
 
 It is recommended to use authentication with AWS Cognito at the endpoint of this API to avoid information leakage
@@ -43,13 +40,13 @@ This JSON  contains information about running instances
        ]
     }
 
-**InstanceName**:		Instance name     
-**InstanceId**:				Unique instance ID    
-**ProjectTag**:				Project tag used to separate projects in the AWS account, default is PROJETO    
-**SubProjectTag**:		Sub-project tag used to separate further the elements in the project, default is SUB-PROJETO    
-**InstanceState**:		'pending'|'running'|'shutting-down'|'terminated'|'stopping'|'stopped'   
-**InstanceStatus**:		'passed'|'failed'|'insufficient-data'|'initializing'   
-**SystemStatus**:			'passed'|'failed'|'insufficient-data'|'initializing'   
+- **InstanceName**:		Instance name     
+- **InstanceId**:				Unique instance ID    
+- **ProjectTag**:				Project tag used to separate projects in the AWS account, default is PROJETO    
+- **SubProjectTag**:		Sub-project tag used to separate further the elements in the project, default is SUB-PROJETO    
+- **InstanceState**:		'pending'|'running'|'shutting-down'|'terminated'|'stopping'|'stopped'   
+- **InstanceStatus**:		'passed'|'failed'|'insufficient-data'|'initializing'   
+- **SystemStatus**:			'passed'|'failed'|'insufficient-data'|'initializing'   
 
 
 ## -SSM COMPLIANCE JSON-
@@ -97,15 +94,15 @@ JSON with information about cache servers.
 
 
 
-**ServiceUpdateType**:				Update type.     
-**GroupId**:									Cluster group that this update is meant for.    
-**ServiceUpdateSeverity**:		Update severity - 'critical'|'important'|'medium'|'low',     
-**UpdateActionStatus**:				Update status - 'not-applied'|'waiting-to-start'|'in-progress'|'stopping'|'stopped'|'complete',   
-**ServiceUpdateRecommendedApplyByDate**: Tempo em unix timestamp   
-**SlaMet**: 									Update SLA (if it was applied before the recommended date)  - yes'|'no'|'n/a'   
-**ReplicationGroupId**:				Replication group id    
-**CacheClusterStatus**:				Cache cluster status - available , creating , deleted , deleting , incompatible-network , modifying , rebooting cluster nodes , restore-failed , or snapshotting .   
-**NumCacheNodes**:					Number of cache nodes in the cluster     
+- **ServiceUpdateType**:				Update type.     
+- **GroupId**:									Cluster group that this update is meant for.    
+- **ServiceUpdateSeverity**:		Update severity - 'critical'|'important'|'medium'|'low',     
+- **UpdateActionStatus**:				Update status - 'not-applied'|'waiting-to-start'|'in-progress'|'stopping'|'stopped'|'complete',   
+- **ServiceUpdateRecommendedApplyByDate**: Tempo em unix timestamp   
+- **SlaMet**: 									Update SLA (if it was applied before the recommended date)  - yes'|'no'|'n/a'   
+- **ReplicationGroupId**:				Replication group id    
+- **CacheClusterStatus**:				Cache cluster status - available , creating , deleted , deleting , incompatible-network , modifying , rebooting cluster nodes , restore-failed , or snapshotting .   
+- **NumCacheNodes**:					Number of cache nodes in the cluster     
 
 
 ## -RDS JSON-
@@ -126,10 +123,11 @@ JSON containing information about the RDS instances.
        ]
     }
 
-**DBInstanceIdentifier**: 	RDS DB Instance identifier.    
-**AllocatedStorage**:			Alocated storage for RDS Instance.    
-**MaxAllocatedStorage**:	Max permitted storage.    
-**DBInstanceStatus**: 		Database status - possible statuses:     
+- **DBInstanceIdentifier**: 	RDS DB Instance identifier.    
+- **AllocatedStorage**:			Alocated storage for RDS Instance.    
+- **MaxAllocatedStorage**:	Max permitted storage.    
+- **DBInstanceStatus**: 		Database status - possible statuses:     
+
 | DB Instance Status                  | Description                                                                                                                                                                                                                                                                                                                                                                       |
 |-------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | available                           | The DB instance is healthy and available.                                                                                                                                                                                                                                                                                                                                         |
@@ -160,8 +158,8 @@ JSON containing information about the RDS instances.
 | storage-full                        | The DB instance has reached its storage capacity allocation. This is a critical status, and we recommend that you fix this issue immediately. To do so, scale up your storage by modifying the DB instance. To avoid this situation, set Amazon CloudWatch alarms to warn you when storage space is getting low.                                                                  |
 | storage-optimization                | Your DB instance is being modified to change the storage size or type. The DB instance is fully operational. However, while the status of your DB instance is storage-optimization, you can't request any changes to the storage of your DB instance. The storage optimization process is usually short, but can sometimes take up to and even beyond 24 hours.                   |
 | upgrading                           | The database engine version is being upgraded.                                                                                                                                                                                                                                                                                                                                    |
-**Engine**: 							Database Engine.      
-**SubnetStatus**:					Database subnets status (could not find anything other than "available" in AWS Docs)
+- **Engine**: 							Database Engine.      
+- **SubnetStatus**:					Database subnets status (could not find anything other than "available" in AWS Docs)
 
 
 ## -ELASTICBEANSTALK JSON-
@@ -243,8 +241,8 @@ JSON that contains elastic beanstalk information.
      }
 
    
-**ApplicationName**: Application name    
-**EnvironmentInstances**: List of instances with statuses     
+- **ApplicationName**: Application name    
+- **EnvironmentInstances**: List of instances with statuses     
 
  - **InstanceId**: Identifier of the instances of the environment
  - **HealthStatus**: Machine status - https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html    
@@ -260,22 +258,22 @@ JSON that contains elastic beanstalk information.
  - **DeployVersionLabel**: Version of the application that is installed on this machine    
  - **DeployStatus**: Deployment status, indicates the current status of updates and modifications "In Progress", Deployed, "Failed"    
     
-**EnvironmentName**: Name of the environment where the code is    
-**EnvironmentVersionLabel**: Version of the application that was placed in the environment    
-**EnvironmentStatus**: Discrete environment status - 'Launching' | 'Updating' | 'Ready' | 'Terminating' | 'Terminated',    
-**EnvironmentColor**: Color referring to the status of the environment - 'Green' | 'Yellow' | 'Red' | 'Gray', https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced -status.html    
-**EnvironmentHealthStatus**: General environment status - 'NoData' | 'Unknown' | 'Pending' | 'Ok' | 'Info' | 'Warning' | 'Degraded' | 'Severe' | 'Suspended', https: / /docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html    
-**EnvironmentMetricsAvailable**: Boolean indicating whether values ​​with metrica_ DO AMBIENTE are available    
-**EnvironmentLatencyMetrics**: List containing 8 metrics of latency percentile 0.1% (99.9) 1% (99) 5% (95) 10% (90) 15% (85) 25% (75) 50% (50) 90 % (10) of the ENVIRONMENT    
-**EnvironmentDurationMetrics**: Update period between metrics    
-**EnvironmentRequestCountMetrics**: Number of requests in the metric period    
-**EnvironmentStatusCodesMetrics**: lists http codes returned by the application    
-**EnvironmentCauseMessage**: String informing descriptively the problems of the environment (if any)    
-**EnvironmentLoadBalancers**: Loadbalancer communication status list to the machine (not working properly)    
-**LoadBalancerInstanceId**: machine id    
-**LoadBalancerState**:, machine connection status - InService | OutOfService | Unknown    
-**LoadBalancerReasonCode**:, in case of a problem what is the problem code - ELB | Instance | AT    
-**LoadBalancerDescription**: description of the problem     
+- **EnvironmentName**: Name of the environment where the code is    
+- **EnvironmentVersionLabel**: Version of the application that was placed in the environment    
+- **EnvironmentStatus**: Discrete environment status - 'Launching' | 'Updating' | 'Ready' | 'Terminating' | 'Terminated',    
+- **EnvironmentColor**: Color referring to the status of the environment - 'Green' | 'Yellow' | 'Red' | 'Gray', https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced -status.html    
+- **EnvironmentHealthStatus**: General environment status - 'NoData' | 'Unknown' | 'Pending' | 'Ok' | 'Info' | 'Warning' | 'Degraded' | 'Severe' | 'Suspended', https: / /docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html    
+- **EnvironmentMetricsAvailable**: Boolean indicating whether values ​​with metrica_ DO AMBIENTE are available    
+- **EnvironmentLatencyMetrics**: List containing 8 metrics of latency percentile 0.1% (99.9) 1% (99) 5% (95) 10% (90) 15% (85) 25% (75) 50% (50) 90 % (10) of the ENVIRONMENT    
+- **EnvironmentDurationMetrics**: Update period between metrics    
+- **EnvironmentRequestCountMetrics**: Number of requests in the metric period    
+- **EnvironmentStatusCodesMetrics**: lists http codes returned by the application    
+- **EnvironmentCauseMessage**: String informing descriptively the problems of the environment (if any)    
+- **EnvironmentLoadBalancers**: Loadbalancer communication status list to the machine (not working properly)    
+- **LoadBalancerInstanceId**: machine id    
+- **LoadBalancerState**:, machine connection status - InService | OutOfService | Unknown    
+- **LoadBalancerReasonCode**:, in case of a problem what is the problem code - ELB | Instance | AT    
+- **LoadBalancerDescription**: description of the problem     
 
 
 ## -SES JSON-
@@ -297,14 +295,14 @@ JSON that contains elastic beanstalk information.
         ]
      }
 
-**StatiticsDataPoints**: lists of graph datapoints containing multiple send statistics   
-**Timestamp**: Timestap of the datapoint    
-**DeliveryAttempts**: numer of delivery attempts     
-**Bounces**: Number of email bounces    
-**Complaints**: Number of email compliants    
-**Rejects**: Number of rejected emails    
-**SendingQuota**: Maximum email sending Quote    
-**Domains**: email domain    
+- **StatiticsDataPoints**: lists of graph datapoints containing multiple send statistics   
+- **Timestamp**: Timestap of the datapoint    
+- **DeliveryAttempts**: numer of delivery attempts     
+- **Bounces**: Number of email bounces    
+- **Complaints**: Number of email compliants    
+- **Rejects**: Number of rejected emails    
+- **SendingQuota**: Maximum email sending Quote    
+- **Domains**: email domain    
 
 ### Roadmap of next features
 
